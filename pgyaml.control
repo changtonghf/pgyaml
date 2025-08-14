@@ -1,0 +1,5 @@
+# yaml extension
+comment = 'transform between yaml and jsonb'
+default_version = '1.0'
+module_pathname = '$libdir/pgyaml'
+relocatable = false

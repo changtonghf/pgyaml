@@ -1,0 +1,22 @@
+create extension pgyaml;
+select yaml_to_jsonb($$
+base: &base
+    name: Lyoto Machida
+    greeting: こんにちは
+
+foo: &foo
+    <<: *base
+    age: 10
+    fax: 
+
+bar: &bar
+    <<: *base
+    age: 20
+    tel: 86-15150025405
+$$::text);
+                                                                                                                   yaml_to_jsonb                                                                                                                   
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ {"bar": {"age": 20, "tel": "86-15150025405", "name": "Lyoto Machida", "greeting": "こんにちは"}, "foo": {"age": 10, "fax": null, "name": "Lyoto Machida", "greeting": "こんにちは"}, "base": {"name": "Lyoto Machida", "greeting": "こんにちは"}}
+(1 row)
+
+drop extension pgyaml;
